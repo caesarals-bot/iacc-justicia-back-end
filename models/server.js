@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const clientesRoutes = require("../routes/clientes");
 const casosRoutes = require("../routes/casos");
+const usuariosRoutes = require("../routes/usuarios");
 
 class Server {
     constructor() {
@@ -10,6 +11,7 @@ class Server {
         this.port = process.env.PORT || 8081;
         this.clientesPath = "/api/clientes";
         this.casosPath = "/api/casos";
+        this.usuariosPath = "/api/usuarios";
 
         // Middlewares
         this.middlewares();
@@ -29,6 +31,7 @@ class Server {
     routes() {
         this.app.use(this.clientesPath, clientesRoutes);
         this.app.use(this.casosPath, casosRoutes);
+        this.app.use(this.usuariosPath, usuariosRoutes);
     }
 
     listen() {
